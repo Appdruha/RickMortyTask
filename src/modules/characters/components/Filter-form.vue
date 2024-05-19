@@ -7,7 +7,7 @@ defineEmits<{
 }>()
 
 const nameInputValue = ref<string>('')
-const statusSelectValue = ref<{ status: string }>({ status: '' })
+const statusSelectValue = ref<{ status: string } | null>(null)
 const statuses = ref<{ status: string }[]>([
   { status: 'unknown' },
   { status: 'Dead' },

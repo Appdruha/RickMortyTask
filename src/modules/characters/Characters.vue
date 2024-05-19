@@ -38,13 +38,13 @@ const setCharactersAndPaginationData = async (page: number, name?: string, statu
   paginationInfo.value = {pages, count}
 }
 
-const setFilterOptions = (name: string, statusObjects: StatusObj) => {
-  filterOptions.value = {name, status: statusObjects.status}
+const setFilterOptions = (name: string, statusObject: StatusObj | null) => {
+  filterOptions.value = {name, status: statusObject ? statusObject.status : ''}
 }
 </script>
 
 <template>
-  <FilterForm @get-form-state='(name: string, status: StatusObj) => setFilterOptions(name, status)'
+  <FilterForm @get-form-state='(name: string, status: StatusObj | null) => setFilterOptions(name, status)'
   />
   <div :class='$style.cardsContainer'>
     <CharacterCard
