@@ -3,7 +3,7 @@
 import { ref } from 'vue'
 
 defineEmits<{
-  (e: 'getFormState', name: string, status: { status: string }): void
+  (e: 'getFormState', name: string, status: { status: string } | null): void
 }>()
 
 const nameInputValue = ref<string>('')
