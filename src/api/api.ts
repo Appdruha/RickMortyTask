@@ -9,7 +9,8 @@ const instance = axios.create({
   withCredentials: false,
 })
 
-export const getAll = async () => {
-  const { data } = await instance.get<{ info: PaginationInfo, results: Character[] }>('')
+export const getCharactersPage = async (page: number, name?: string, status?: string) => {
+  const { data } =
+    await instance.get<{ info: PaginationInfo, results: Character[] }>('', {params: {page, name, status}})
   return data
 }
