@@ -3,11 +3,11 @@
 import { ref } from 'vue'
 
 defineEmits<{
-  (e: 'getFormState', name: string, statuses: { status: string, value: string }[]): void
+  (e: 'getFormState', name: string, status: { status: string }): void
 }>()
 
 const nameInputValue = ref<string>('')
-const statusSelectValue = ref<{ status: string }>()
+const statusSelectValue = ref<{ status: string }>({ status: '' })
 const statuses = ref<{ status: string }[]>([
   { status: 'unknown' },
   { status: 'Dead' },
@@ -24,7 +24,8 @@ const statuses = ref<{ status: string }[]>([
         <label for='name' :class='$style.label'>Name</label>
       </FloatLabel>
       <FloatLabel>
-        <Dropdown v-model='statusSelectValue' :options='statuses' optionLabel='status' :class='$style.input' id='status' />
+        <Dropdown v-model='statusSelectValue' :options='statuses' optionLabel='status' :class='$style.input'
+                  id='status' />
         <label for='status' :class='$style.label'>Status</label>
       </FloatLabel>
     </div>
